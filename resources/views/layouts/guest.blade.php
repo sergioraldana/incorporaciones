@@ -16,11 +16,12 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
 
-
+        @livewireStyles
     </head>
     <body>
         <div style="min-height: 640px;" class="bg-gray-100">
             {{ $slot }}
         </div>
+        @livewireScripts
     </body>
 </html>

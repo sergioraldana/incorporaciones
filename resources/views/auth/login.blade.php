@@ -1,10 +1,8 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
+<x-jet-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
+        </x-slot
+    <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-blue-600">
@@ -45,4 +43,3 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>

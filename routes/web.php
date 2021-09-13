@@ -13,9 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| ESTUDIANTE
+|--------------------------------------------------------------------------
+*/
+
+
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
+
+Route::get('/tablero', function () {
+    return view('livewire.tablero');
+})->name('tablero');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -24,3 +35,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/tramites', function () {
     return view('tramites');
 })->name('tramites');
+
+Route::get('/solicitar/incorporacion', function () {
+    return view('livewire.estudiante.tramites.formulario-solicitud-incorporacion');
+});
+

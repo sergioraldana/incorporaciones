@@ -309,7 +309,7 @@
 
 
                             </div>
-                            @livewire('formulario-historial-solcitud')
+                            @livewire('formulario-historial-solicitud')
                         </div>
                         <!-- End main area -->
 
