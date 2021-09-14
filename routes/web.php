@@ -36,7 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tramites', function () {
     return view('tramites');
 })->name('tramites');
 
-Route::get('/solicitar/incorporacion', function () {
-    return view('livewire.estudiante.tramites.formulario-solicitud-incorporacion');
+Route::get('/solicitudes/recibidas', function () {
+    return view('livewire.solicitudes-recibidas');
 });
 
