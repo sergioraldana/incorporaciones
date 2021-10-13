@@ -1,3 +1,4 @@
+{{--Login adaptable al tipo de usuario--}}
 <div>
     <x-authentication-card>
         <x-slot name="logo">

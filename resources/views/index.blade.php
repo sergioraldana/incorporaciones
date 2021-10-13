@@ -1,4 +1,4 @@
-
+{{--Pantalla inicial del sistema muestra inicio de sesión--}}
 <x-guest-layout>
 
     <nav class="bg-blue-800">
