@@ -13,30 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-|--------------------------------------------------------------------------
-| ESTUDIANTE
-|--------------------------------------------------------------------------
-*/
-
-
 Route::get('/', function () {
     return view('index');
-})->name('index');
-
-Route::get('/tablero', function () {
-    return view('livewire.tablero');
-})->name('tablero');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/tramites', function () {
-    return view('tramites');
-})->name('tramites');
-
-Route::get('/solicitudes/recibidas', function () {
-    return view('livewire.solicitudes-recibidas');
-});
-
+})->name('index')->middleware(['guest']);;

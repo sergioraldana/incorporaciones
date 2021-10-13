@@ -13,9 +13,6 @@ class Index extends Component
         $this->emit('updated');
 }
 
-    // model update
-
-
     public function render()
     {
         return view('livewire.index');

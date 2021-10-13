@@ -1,8 +1,5 @@
 <div>
     <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div class="absolute inset-0">
-            <div class="bg-white h-1/3 sm:h-2/3"></div>
-        </div>
         <div class="relative max-w-7xl mx-auto">
             <div class="text-center">
                 <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
@@ -14,39 +11,47 @@
                 </p>
             </div>
 
-            {{--Opciones--}}
-            <div class="mt-12 max-w-lg mx-auto grid gap-12 lg:grid-cols-3 lg:max-w-none">
+            <x-validation-errors class="mb-4"/>
 
-                {{--Estudiante--}}
-                <div href="#formEstudiante" class="0 cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white"
-                   wire:click="$set('mostrar', 'formEstudiante')">
-                <div>
-                    <div class="flex justify-center flex-shrink-">
-                        <svg class="flex-shrink-0 h-40 w-auto " x-description="Heroicon name: outline/document-text"
-                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                             aria-hidden="true">
-                            <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                            <path
-                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}
-                                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col justify-between">
-                        <div class="flex-1">
-                            <div href="#" class="block mt-2">
-                                <p class="text-xl font-semibold flex justify-center">
-                                    Estudiante
-                                </p>
+            {{--Opciones--}}
+            <div x-data="{ estudiante: false, administrativo: false, verificador: false }"
+                 class="mt-12 max-w-lg mx-auto grid gap-12 lg:grid-cols-3 lg:max-w-none">
+                {{--Layout--}}
+                <div href="#formEstudiante"
+                     wire:click="$set('mostrar', 'formEstudiante')"
+                     x-on:click="estudiante = ! estudiante, administrativo = false, verificador = false"
+                     :class="estudiante ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
+                            : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
+                    <div>
+                        <div class="flex justify-center flex-shrink-0">
+                            <svg class="flex-shrink-0 h-40 w-auto " x-description="Heroicon name: outline/document-text"
+                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor"
+                                 aria-hidden="true">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                <path
+                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}
+                                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <div href="#" class="block mt-2">
+                                    <p class="text-xl font-semibold flex justify-center">
+                                        Estudiante
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
                 {{--Administrativo--}}
                 <div
-                    class="cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-                    wire:click="$set('mostrar', 'formAdministrativo')">
+                    wire:click="$set('mostrar', 'formAdministrativo')"
+                    x-on:click="administrativo = ! administrativo, estudiante = false, verificador = false"
+                    :class="administrativo ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
+                            : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
                     <div class="flex-shrink-0">
                         <div class="flex justify-center flex-shrink-0 bg-white">
                             <svg class="flex-shrink-0 h-40 w-auto" x-description="Heroicon name: outline/document-text"
@@ -70,7 +75,10 @@
                 </div>
                 {{--Verificar--}}
                 <div
-                    class="cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    wire:click="$set('mostrar', 'formVerificar')"
+                    x-on:click="verificador = ! verificador, estudiante = false, administrativo = false"
+                    :class="verificador ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
+                            : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
                     <div class="flex-shrink-0">
                         <div class="flex justify-center flex-shrink-0 bg-white">
                             <svg class="flex-shrink-0 h-40 w-auto" x-description="Heroicon name: outline/document-text"
@@ -99,9 +107,17 @@
     <div>
 
         @if($mostrar == 'formEstudiante')
-            @livewire('estudiante.login-estudiante')
+            @livewire('login',
+            ['titulo' => 'Login estudiante desde componente',
+            'usuario' => 'Registro Academico',
+            'credencial' => 'PIN',
+            'botonRecuperar' => 'Recuperar PIN'])
         @elseif($mostrar == 'formAdministrativo')
-            @livewire('estudiante.login-estudiante')
+            @livewire('login',
+            ['titulo' => 'Login Administrativo desde componente',
+            'usuario' => 'Registro de Personal',
+            'credencial' => 'Contraseña',
+            'botonRecuperar' => 'Recuperar contraseña'])
         @endif
 
     </div>

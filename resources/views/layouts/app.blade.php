@@ -18,8 +18,8 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <body style="max-height: 800px;" class="overflow-y-auto font-sans antialiased">
+        {{--<x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
@@ -36,7 +36,8 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-            </main>
+            </main>--}}
+        {{ $slot }}
         </div>
 
         @stack('modals')

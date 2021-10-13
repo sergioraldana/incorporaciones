@@ -17,7 +17,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/';
+    public const ESTUDIANTE = '/estudiante';
+    public const ADMIN = '/admin';
+
 
     /**
      * The controller namespace for the application.
@@ -46,6 +49,16 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware('web', 'auth')
+                ->prefix('estudiante')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/estudiante.php'));
+
+            Route::middleware('web', 'auth')
+                ->prefix('admin')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin.php'));
         });
     }
 
@@ -59,5 +72,10 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+
+        RateLimiter::for('/', function () {
+            return Limit::perMinute(5);          //You can change this number to avoid 429 error.
+        });
+
     }
 }

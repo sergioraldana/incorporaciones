@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'expiration' => null,
+    'expiration' => null, //valor original null
 
     /*
     |--------------------------------------------------------------------------
