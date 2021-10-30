@@ -24,13 +24,7 @@ class CreateSolicitudTable extends Migration
                 Solicitud::PROFESORES,
                 Solicitud::REGISTRO]);
 
-            $table->enum('estado',
-                [Solicitud::SOLICITADO,
-                    Solicitud::REVISION,
-                    Solicitud::PENDIENTE_COMPLETAR,
-                    Solicitud::DENEGADO,
-                    Solicitud::DESISTIDO,
-                    Solicitud::TRAMITE]);
+            $table->tinyInteger('estado');
 
             //Datos Generales
             $table->unsignedBigInteger('estudiante_usuario_id');

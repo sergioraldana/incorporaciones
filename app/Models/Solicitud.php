@@ -18,7 +18,6 @@ class Solicitud extends Model
     const PROFESORES = 6;
     const REGISTRO = 7;
 
-
     //Relacionn uno a muchos inversa
 
     public function estudiante()
