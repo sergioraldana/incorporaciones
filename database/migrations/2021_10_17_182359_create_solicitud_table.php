@@ -27,10 +27,8 @@ class CreateSolicitudTable extends Migration
             $table->tinyInteger('estado');
 
             //Datos Generales
-            $table->unsignedBigInteger('estudiante_usuario_id');
             $table->foreignId('estudiante_usuario_id')->constrained('users');
 
-            $table->unsignedBigInteger('admin_usuario_id');
             $table->foreignId('admin_usuario_id')->constrained('users');
 
             $table->char('cui', 13);
@@ -41,27 +39,21 @@ class CreateSolicitudTable extends Migration
             $table->char('celular', 8);
             $table->string('correo', 50);
 
-            $table->unsignedBigInteger('dir_departamento_id');
             $table->foreignId('dir_departamento_id')->constrained('departamento');
 
-            $table->unsignedBigInteger('dir_municipio_id');
             $table->foreignId('dir_municipio_id')->constrained('municipio');
 
             $table->string('direccion', 100);
 
-            $table->unsignedBigInteger('nac_departamento_id');
             $table->foreignId('nac_departamento_id')->constrained('departamento');
 
-            $table->unsignedBigInteger('nac_municipio_id');
             $table->foreignId('nac_municipio_id')->constrained('municipio');
 
             $table->date('nac_fecha');
 
-            $table->unsignedBigInteger('nac_pais_id');
             $table->foreignId('nac_pais_id')->constrained('pais');
 
             //Estudios Realizados en el extranjero
-            $table->unsignedBigInteger('institucion_pais_id');
             $table->foreignId('institucion_pais_id')->constrained('pais');
 
             $table->string('institucion_graduacion', 100);

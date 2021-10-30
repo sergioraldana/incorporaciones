@@ -16,13 +16,11 @@ class CreateBitacoraTable extends Migration
         Schema::create('bitacora', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('estado_id');
             $table->foreignId('estado_id')->constrained('estado');
 
             $table->unsignedBigInteger('bitacorable_id');
             $table->string('bitacorable_tipo');
 
-            $table->unsignedBigInteger('usuario_id');
             $table->foreignId('usuario_id')->constrained('users');
 
             $table->timestamps();

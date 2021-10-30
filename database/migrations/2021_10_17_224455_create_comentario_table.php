@@ -21,7 +21,6 @@ class CreateComentarioTable extends Migration
             $table->unsignedBigInteger('comentable_id');
             $table->string('comentable_tipo');
 
-            $table->unsignedBigInteger('usuario_id');
             $table->foreignId('usuario_id')->constrained('users');
 
             $table->timestamps();
