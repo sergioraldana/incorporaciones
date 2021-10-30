@@ -62,4 +62,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //relacion uno a muchos
+
+    public function solicitudesRealizadas(){
+        return $this->hasMany(Solicitud::class, 'estudiante_usuario_id');
+    }
+
+    public function solicitudesAdministradas(){
+        return $this->hasMany(Solicitud::class,'admin_usuario_id');
+    }
+
 }

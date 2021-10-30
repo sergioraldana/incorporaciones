@@ -15,6 +15,15 @@ class CreateComentarioTable extends Migration
     {
         Schema::create('comentario', function (Blueprint $table) {
             $table->id();
+
+            $table->string('mensaje');
+
+            $table->unsignedBigInteger('comentable_id');
+            $table->string('comentable_tipo');
+
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreignId('usuario_id')->constrained('users');
+
             $table->timestamps();
         });
     }

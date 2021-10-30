@@ -1,5 +1,5 @@
 <div>
-    <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div class="relative bg-gray-50 py-12 px-16 sm:px-6 lg:pt-12 lg:pb-28 lg:px-8">
         <div class="relative max-w-7xl mx-auto">
             <div class="text-center">
                 <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
@@ -14,16 +14,16 @@
             <x-validation-errors class="mb-4"/>
 
             {{--Opciones--}}
-            <div x-data="{ estudiante: false, administrativo: false, verificador: false }"
+            <div x-data="{ estudiante: false, administrativo: false, verificador: false, scroll: () => { $el.scrollTo(0, $el.scrollHeight); }} "
                  class="mt-12 max-w-lg mx-auto grid gap-12 lg:grid-cols-3 lg:max-w-none">
                 {{--Layout--}}
-                <div href="#formEstudiante"
+                <div
                      wire:click="$set('mostrar', 'formEstudiante')"
                      x-on:click="estudiante = ! estudiante, administrativo = false, verificador = false"
                      :class="estudiante ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
                             : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
                     <div>
-                        <div class="flex justify-center flex-shrink-0">
+                        <div class="flex justify-center flex-shrink-0 mt-6">
                             <svg class="flex-shrink-0 h-40 w-auto " x-description="Heroicon name: outline/document-text"
                                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor"
@@ -52,7 +52,7 @@
                     x-on:click="administrativo = ! administrativo, estudiante = false, verificador = false"
                     :class="administrativo ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
                             : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
-                    <div class="flex-shrink-0">
+                    <div class="flex justify-center shrink-0 mt-6">
                         <div class="flex justify-center flex-shrink-0 bg-white">
                             <svg class="flex-shrink-0 h-40 w-auto" x-description="Heroicon name: outline/document-text"
                                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -79,7 +79,7 @@
                     x-on:click="verificador = ! verificador, estudiante = false, administrativo = false"
                     :class="verificador ? 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white ring'
                             : 'cursor-pointer flex flex-col rounded-lg shadow-lg overflow-hidden text-gray-500 hover:text-blue-800 hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 0 bg-white'">
-                    <div class="flex-shrink-0">
+                    <div class="flex justify-center shrink-0 mt-6">
                         <div class="flex justify-center flex-shrink-0 bg-white">
                             <svg class="flex-shrink-0 h-40 w-auto" x-description="Heroicon name: outline/document-text"
                                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -105,21 +105,19 @@
     </div>
 
     <div>
-
         @if($mostrar == 'formEstudiante')
             @livewire('login',
-            ['titulo' => 'Login estudiante desde componente',
+            ['titulo' => 'Bienvenido al Sistema Estudiantil de Incorporaciones',
             'usuario' => 'Registro Academico',
             'credencial' => 'PIN',
             'botonRecuperar' => 'Recuperar PIN'])
         @elseif($mostrar == 'formAdministrativo')
             @livewire('login',
-            ['titulo' => 'Login Administrativo desde componente',
+            ['titulo' => 'Bienvenido al Sistema Administrativo de Incorporaciones',
             'usuario' => 'Registro de Personal',
             'credencial' => 'Contraseña',
             'botonRecuperar' => 'Recuperar contraseña'])
         @endif
-
     </div>
 
 </div>

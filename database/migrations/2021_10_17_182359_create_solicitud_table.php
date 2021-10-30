@@ -16,12 +16,22 @@ class CreateSolicitudTable extends Migration
     {
         Schema::create('solicitud', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo_tramite', [Solicitud::INCORPORACION,
-                Solicitud::AUT_EJERCER_PROF_USAC,
-                Solicitud::REC_POSTGRADO_USAC,
-                Solicitud::REC_ESP_MEDICA_USAC,
-                Solicitud::REC_PROFESORES_USAC,
-                Solicitud::REGISTRO_DIPLOMA_USAC]);
+            $table->enum('tipo_tramite',
+                [Solicitud::INCORPORACION,
+                Solicitud::AUTORIZACION,
+                Solicitud::POSTGRADO,
+                Solicitud::REM_NACIONAL,
+                Solicitud::PROFESORES,
+                Solicitud::REGISTRO]);
+
+            $table->enum('estado',
+                [Solicitud::SOLICITADO,
+                    Solicitud::REVISION,
+                    Solicitud::PENDIENTE_COMPLETAR,
+                    Solicitud::DENEGADO,
+                    Solicitud::DESISTIDO,
+                    Solicitud::TRAMITE]);
+
             //Datos Generales
             $table->unsignedBigInteger('estudiante_usuario_id');
             $table->foreignId('estudiante_usuario_id')->constrained('users');
@@ -72,13 +82,15 @@ class CreateSolicitudTable extends Migration
             $table->date('fecha_registro');
 
             //Opciones incorporacion
-            $table->enum('opcion_incorporacion', [Solicitud::EXAMEN, [Solicitud::SERVICIO]])->nullable();
 
-            
             $table->index(['nombres']);
             $table->index(['apellidos']);
+            $table->index(['nombres', 'apellidos']);
             $table->index(['cui']);
             $table->index(['nac_pais_id']);
+            $table->index(['institucion_pais_id']);
+            $table->index(['tipo_tramite']);
+            $table->index(['estado']);
 
             $table->timestamps();
         });
@@ -91,6 +103,6 @@ class CreateSolicitudTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicituds');
+        Schema::dropIfExists('solicitud');
     }
 }

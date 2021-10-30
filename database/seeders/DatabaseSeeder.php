@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Pais;
 use App\Models\Departamento;
 use App\Models\Municipio;
 use Database\Factories\UserFactory;
@@ -19,9 +20,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            RolesYPermisosSeeder::class,
+            PaisSeeder::class,
             DepartamentoSeeder::class,
             MunicipioSeeder::class,
+            RolesYPermisosSeeder::class,
             UsuariosSeeder::class,
         ]);
     }

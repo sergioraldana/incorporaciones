@@ -1,9 +1,5 @@
-<div>
-    @section('panel')
-
-    <section class="mt-2 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:grid-cols-3">
+<div class="py-12 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:grid-cols-3">
         <!-- Solicitudes realizadas -->
-
         <div class="bg-white overflow-hidden shadow-lg rounded-lg">
             <div class="p-5">
                 <div class="flex items-center">
@@ -101,9 +97,9 @@
             </div>
         </div>
 
-    </section>
+    </div>
 
-    <section class="max-w-7xl mx-auto py-12 sm:px-0 lg:px-0">
+    <section class="max-w-7xl mx-auto pb-12 sm:px-0 lg:px-0">
         <div class="max-w-none mx-auto">
             <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow-lg">
 
@@ -237,6 +233,4 @@
 
             </div>
         </div>
-    </section>
-    @endsection
 </div>

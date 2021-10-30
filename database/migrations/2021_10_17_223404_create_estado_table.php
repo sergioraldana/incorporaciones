@@ -15,12 +15,7 @@ class CreateEstadoTable extends Migration
     {
         Schema::create('estado', function (Blueprint $table) {
             $table->id();
-
-            $table->enum('nombre');
-            $table->unsignedBigInteger('operador_usuario_id');
-            $table->foreignId('operador_usuario_id')->constrained('users');
-            $table->timestamp('created_at');
-
+            $table->string('nombre');
         });
     }
 

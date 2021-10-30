@@ -16,8 +16,10 @@ class CreateIncorporacionTable extends Migration
     {
         Schema::create('incorporacion', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('solicitud_id');
             $table->foreignId('solicitud_id')->constrained('solicitud');
+
             $table->enum('opcion_incorporacion', [Incorporacion::EXAMEN, [Incorporacion::SERVICIO]]);
 
             $table->timestamps();
