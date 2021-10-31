@@ -16,21 +16,13 @@ class CreateSolicitudTable extends Migration
     {
         Schema::create('solicitud', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo_tramite',
-                [Solicitud::INCORPORACION,
-                Solicitud::AUTORIZACION,
-                Solicitud::POSTGRADO,
-                Solicitud::REM_NACIONAL,
-                Solicitud::PROFESORES,
-                Solicitud::REGISTRO]);
-
-            $table->tinyInteger('estado');
+            $table->foreignId('tipo_tramite')->constrained('tipo_tramite');
+            $table->foreignId('estado')->constrained('estado');
+            $table->string('numero_expediente', 50);
 
             //Datos Generales
             $table->foreignId('estudiante_usuario_id')->constrained('users');
-
             $table->foreignId('admin_usuario_id')->constrained('users');
-
             $table->char('cui', 13);
             $table->char('pasaporte', 20)->nullable();
             $table->string('nombres', 100);
@@ -38,36 +30,36 @@ class CreateSolicitudTable extends Migration
             $table->char('telefono', 8)->nullable();
             $table->char('celular', 8);
             $table->string('correo', 50);
+            $table->string('fotografia', 100);
 
+            //Direccion
             $table->foreignId('dir_departamento_id')->constrained('departamento');
-
             $table->foreignId('dir_municipio_id')->constrained('municipio');
-
             $table->string('direccion', 100);
 
+            //Nacimiento
             $table->foreignId('nac_departamento_id')->constrained('departamento');
-
             $table->foreignId('nac_municipio_id')->constrained('municipio');
-
             $table->date('nac_fecha');
-
             $table->foreignId('nac_pais_id')->constrained('pais');
+
+            //Estudios Realizados a nivel de grado
+            $table->foreignId('estudios_grado_id')->constrained('estudios_grado')->nullable();
 
             //Estudios Realizados en el extranjero
             $table->foreignId('institucion_pais_id')->constrained('pais');
-
             $table->string('institucion_graduacion', 100);
-            $table->string('titulo_profesional', 200);
+            $table->string('titulo_prof_obtenido', 200);
             $table->double('duracion', 1, 1);
             $table->tinyInteger('cursos_aprobados');
+
+            //Reconocimiento
+            $table->enum('reconocimiento', ['Doctorado', 'Maestría', 'Especialidad'])->nullable();
+
+            //Incorporacion
+            $table->enum('opcion_incorporacion', ['Examen', 'Servicio social'])->nullable();
+
             $table->string('observaciones', 300)->nullable();
-
-            //Reconocimientos
-            $table->string('titulo_prof_grado', 100);
-            $table->smallInteger('numero_registro');
-            $table->date('fecha_registro');
-
-            //Opciones incorporacion
 
             $table->index(['nombres']);
             $table->index(['apellidos']);

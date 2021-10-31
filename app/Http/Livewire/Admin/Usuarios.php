@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\User;
 use Livewire\Component;
 
 class Usuarios extends Component
+
 {
+
     public function render()
     {
-        return view('livewire.admin.usuarios')
+        $usuarios = User::with('roles')->paginate(10);
+
+        return view('livewire.admin.usuarios', compact('usuarios'))
             ->layout('layouts.admin');
     }
 }

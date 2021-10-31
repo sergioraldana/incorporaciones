@@ -19,7 +19,7 @@ class CreateBitacoraTable extends Migration
             $table->foreignId('estado_id')->constrained('estado');
 
             $table->unsignedBigInteger('bitacorable_id');
-            $table->string('bitacorable_tipo');
+            $table->string('bitacorable_type');
 
             $table->foreignId('usuario_id')->constrained('users');
 

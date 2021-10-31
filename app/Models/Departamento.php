@@ -9,6 +9,10 @@ class Departamento extends Model
 {
     use HasFactory;
 
+    protected $table = 'departamento';
+    protected $id = 'departamento_id';
+
+
     //Relación uno a muchos
     public function municipio()
     {

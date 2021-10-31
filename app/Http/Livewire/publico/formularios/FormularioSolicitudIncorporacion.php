@@ -8,6 +8,6 @@ class FormularioSolicitudIncorporacion extends Component
 {
     public function render()
     {
-        return view('livewire.estudiante.tramites.form-solicitud-incorporacion');
+        return view('livewire.estudiante.tramites.form-solicitud-Incorporacion');
     }
 }

@@ -73,4 +73,7 @@ class User extends Authenticatable
         return $this->hasMany(Solicitud::class,'admin_usuario_id');
     }
 
+
+
+
 }

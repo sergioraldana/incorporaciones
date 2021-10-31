@@ -7,5 +7,5 @@ Route::middleware(['auth:sanctum', 'verified', 'role:estudiante'])
     ->name('estudiante');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:estudiante'])
-    ->get('/incorporacion/create', App\Http\Livewire\Estudiante\Index::class)
-    ->name('incorporacion.create');
+    ->get('/incorporacion/create', App\Http\Livewire\Estudiante\Incorporacion\Create::class)
+    ->name('Incorporacion.create');

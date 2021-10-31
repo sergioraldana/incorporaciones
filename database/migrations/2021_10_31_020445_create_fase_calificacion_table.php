@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Incorporacion;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIncorporacionTable extends Migration
+class CreateFaseCalificacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,13 @@ class CreateIncorporacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('incorporacion', function (Blueprint $table) {
+        Schema::create('fase_calificacion', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('solicitud_id')->constrained('solicitud');
+            $table->unsignedBigInteger('calificable_id');
+            $table->string('calificable_type');
 
-            $table->enum('opcion_incorporacion', [Incorporacion::EXAMEN, [Incorporacion::SERVICIO]]);
+            $table->foreignId('operador_usuario_id')->constrained('users');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateIncorporacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incorporacion');
+        Schema::dropIfExists('fase_calificacion');
     }
 }

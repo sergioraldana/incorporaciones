@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComentarioTable extends Migration
+class CreateEstudiosGradoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateComentarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentario', function (Blueprint $table) {
+        Schema::create('estudios_grado', function (Blueprint $table) {
             $table->id();
 
-            $table->string('mensaje');
-
-            $table->unsignedBigInteger('comentable_id');
-            $table->string('comentable_type');
-
-            $table->foreignId('usuario_id')->constrained('users');
+            $table->string('titulo_prof_grado', 200);
+            $table->string('numero_registro', 100);
+            $table->date('fecha_registro');
 
             $table->timestamps();
         });
@@ -34,6 +31,6 @@ class CreateComentarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentario');
+        Schema::dropIfExists('estudios_grado');
     }
 }
